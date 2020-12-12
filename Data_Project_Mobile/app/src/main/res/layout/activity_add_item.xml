@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddItemActivity">
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="32dp"
+                    android:text="Add Item" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+
+                    <EditText
+                        android:id="@+id/KEY_ITEM_ID"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Item Id"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/KEY_AON_HAND"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Amount on Hand"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/KEY_SCH_RCP"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Scheduled Receipt"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/KEY_ARON_WEEK"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Arrival on Week"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/KEY_LEAD_TIME"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Lead Time"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/KEY_LS_RULE"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Lot Sizing Rule"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/KEY_REQUIRED"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Item Required"
+                        android:inputType="number" />
+
+                    <Spinner
+                        android:id="@+id/mainspinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/addItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Add Item" />
+
+
+                <Button
+                    android:id="@+id/goMain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="GO MAIN MENU" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</RelativeLayout>
