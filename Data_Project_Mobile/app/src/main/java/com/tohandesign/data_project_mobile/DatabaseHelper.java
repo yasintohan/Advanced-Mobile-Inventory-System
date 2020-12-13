@@ -263,8 +263,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.update(TABLE_ITEM, values, KEY_ITEM_ID + " = ?",
                 new String[] { String.valueOf(item.getItemId()) });
     }
+    //#Updating a amount on hand
 
 
+    //Updating Item
+    public int updateItem(ProductItem item) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_AON_HAND, item.getAmountOnHand());
+        values.put(KEY_SCH_RCP, item.getScheduledReceipt());
+        values.put(KEY_ARON_WEEK, item.getArrivalOnWeek());
+        values.put(KEY_LEAD_TIME, item.getLeadTime());
+        values.put(KEY_LS_RULE, item.getLotSizingRule());
+        values.put(KEY_REQUIRED, item.getItemRequired());
+
+        // updating row
+        return db.update(TABLE_ITEM, values, KEY_ITEM_ID + " = ?",
+                new String[] { String.valueOf(item.getItemId()) });
+    }
+    //#Updating Item
 
 
     // closing database

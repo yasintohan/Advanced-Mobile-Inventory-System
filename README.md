@@ -1,9 +1,10 @@
 
 
 
+
 #  Advanced Mobile Inventory System <img src="http://img.shields.io/badge/-Java-F89820?style=flat&logo=java&logoColor=white">
 
-<img src = "/images/1.jpg" height="25%" width="25%"><img src = "/images/2.jpg" height="25%" width="25%"><img src = "/images/3.jpg" height="25%" width="25%"><img src = "/images/4.jpg" height="25%" width="25%">
+<img src = "/images/1.jpg" height="20%" width="20%"><img src = "/images/2.jpg" height="20%" width="20%"><img src = "/images/3.jpg" height="20%" width="20%"><img src = "/images/4.jpg" height="20%" width="20%"><img src = "/images/5.jpg" height="20%" width="20%">
 <br/>
 
 I developed a mobile app that takes bill of material and the gross requirements of the end item along with the stock, scheduled receipt, arrival on week, lead time and lot sizing rule information of the subcomponents to create MRP records for all parts and components.
@@ -16,7 +17,7 @@ This project has been developed using the **sqlite database**.
 ## System Operation
 
   
-There are 4 buttons in the main activity of application. These are **"INVENTORY"**, **"ORDER ITEM"**, **"ADD ITEM"** and **"CLEAR DATABASE"** buttons.
+There are 5 buttons in the main activity of application. These are **"INVENTORY"**, **"ORDER ITEM"**, **"ADD ITEM"**, **"UPDATE ITEM"** and **"CLEAR DATABASE"** buttons.
 
 ### "INVENTORY" button
 When the button is pressed, the inventory page opens and you can see the current stock status.
@@ -41,6 +42,12 @@ When the button is pressed, the product adding page opens and when you fill in t
 >The value in the **spinner** indicates which product is the main product of the product to be added
 
 <br/><img src = "/images/4.jpg" height="30%" width="30%">
+
+### "UPDATE ITEM" button  
+When the button is pressed, the product updating page opens and when you fill in the required fields, the product is updated.
+>  Required fields are automatically filled according to the value you choose in the spinner
+
+<br/><img src = "/images/5.jpg" height="30%" width="30%">
 
 ### "CLEAR DATABASE" button
 When the button is pressed, it deletes all records in the system.

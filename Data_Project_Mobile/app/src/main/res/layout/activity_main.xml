@@ -46,10 +46,16 @@
                     android:text="Order Item" />
 
                 <Button
-                    android:id="@+id/addItem"
+                android:id="@+id/addItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Item" />
+
+                <Button
+                    android:id="@+id/updItem"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Add Item" />
+                    android:text="Update Item" />
 
                 <Button
                     android:id="@+id/clearDB"
