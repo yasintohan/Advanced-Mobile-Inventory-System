@@ -2,6 +2,8 @@ package com.tohandesign.data_project_mobile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -24,6 +27,8 @@ public class UpdItemActivity extends AppCompatActivity {
 
     public String itemIds[];
 
+    AlertDialog.Builder builder;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +36,7 @@ public class UpdItemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_upd_item);
 
         db = new DatabaseHelper(getApplicationContext());
-
+        builder = new AlertDialog.Builder(this);
 
         final EditText KEY_AON_HAND = (EditText)findViewById(R.id.KEY_AON_HAND);
         final EditText KEY_SCH_RCP = (EditText)findViewById(R.id.KEY_SCH_RCP);
@@ -102,6 +107,46 @@ public class UpdItemActivity extends AppCompatActivity {
         });
 
 
+        Button delItem = (Button)findViewById(R.id.delItem);
+
+        delItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(MAIN_ITEM_ID != null) {
+                    String title = "Delete Item";
+                    String msg = "If you delete the item, all of its sub-items are also deleted. \n" +
+                            "Are you sure you want to delete the item?";
+
+                    //Setting message manually and performing action on button click
+                    builder.setMessage(msg)
+                            .setTitle(title)
+                            .setCancelable(false)
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    finish();
+                                    db.deleteItem(MAIN_ITEM_ID);
+                                    Toast.makeText(getApplicationContext(),"The item and sub items you selected have been deleted",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    //  Action for 'NO' Button
+                                    dialog.cancel();
+                                    Toast.makeText(getApplicationContext(),"Nothing was deleted",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                    //Creating dialog box
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                } else {
+                    Toast.makeText(getApplicationContext(),"Nothing was selected",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
 
         intent = new Intent(this, MainActivity.class);

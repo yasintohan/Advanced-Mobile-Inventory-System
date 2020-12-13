@@ -2,6 +2,7 @@
 
 
 
+
 #  Advanced Mobile Inventory System <img src="http://img.shields.io/badge/-Java-F89820?style=flat&logo=java&logoColor=white">
 
 <img src = "/images/1.jpg" height="20%" width="20%"><img src = "/images/2.jpg" height="20%" width="20%"><img src = "/images/3.jpg" height="20%" width="20%"><img src = "/images/4.jpg" height="20%" width="20%"><img src = "/images/5.jpg" height="20%" width="20%">
@@ -48,6 +49,11 @@ When the button is pressed, the product updating page opens and when you fill in
 >  Required fields are automatically filled according to the value you choose in the spinner
 
 <br/><img src = "/images/5.jpg" height="30%" width="30%">
+#### "Delete Item" Button
+
+When the button is pressed, if there is a value in the spinner, the delete dialog box opens. If you delete the item, all of its sub-items are also deleted.
+<br/><img src = "/images/6.jpg" height="30%" width="30%">
+
 
 ### "CLEAR DATABASE" button
 When the button is pressed, it deletes all records in the system.

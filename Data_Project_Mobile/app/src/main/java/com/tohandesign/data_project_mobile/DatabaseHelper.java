@@ -285,6 +285,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //#Updating Item
 
 
+    //Deleting item
+    public void deleteItem(long item_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_ITEM, KEY_ITEM_ID + " = ?",
+                new String[] { String.valueOf(item_id) });
+
+        List<Long> childs = getChilds(item_id);
+        for(Long lg : childs) {
+            deleteItem(lg);
+        }
+        db.delete(TABLE_CHILDS, KEY_MAIN_ITEM_ID + " = ?",
+                new String[] { String.valueOf(item_id) });
+
+    }
+    //Deleting item
+
+
     // closing database
     public void closeDB() {
         SQLiteDatabase db = this.getReadableDatabase();
