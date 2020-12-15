@@ -38,6 +38,11 @@
                     android:layout_height="wrap_content"
                     android:text="Inventory" />
 
+                <Button
+                    android:id="@+id/itemTree"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Item Tree" />
 
                 <Button
                     android:id="@+id/orderItem"

@@ -3,9 +3,11 @@
 
 
 
+
 #  Advanced Mobile Inventory System <img src="http://img.shields.io/badge/-Java-F89820?style=flat&logo=java&logoColor=white">
 
-<img src = "/images/1.jpg" height="20%" width="20%"><img src = "/images/2.jpg" height="20%" width="20%"><img src = "/images/3.jpg" height="20%" width="20%"><img src = "/images/4.jpg" height="20%" width="20%"><img src = "/images/5.jpg" height="20%" width="20%">
+<img src = "/images/1.jpg" height="20%" width="20%"><img src = "/images/2.jpg" height="20%" width="20%"><img src = "/images/3.jpg" height="20%" width="20%">
+<img src = "/images/4.jpg" height="20%" width="20%"><img src = "/images/5.jpg" height="20%" width="20%"><img src = "/images/7.jpg" height="20%" width="20%">
 <br/>
 
 I developed a mobile app that takes bill of material and the gross requirements of the end item along with the stock, scheduled receipt, arrival on week, lead time and lot sizing rule information of the subcomponents to create MRP records for all parts and components.
@@ -18,13 +20,18 @@ This project has been developed using the **sqlite database**.
 ## System Operation
 
   
-There are 5 buttons in the main activity of application. These are **"INVENTORY"**, **"ORDER ITEM"**, **"ADD ITEM"**, **"UPDATE ITEM"** and **"CLEAR DATABASE"** buttons.
+There are 6 buttons in the main activity of application. These are **"INVENTORY"**, **"ITEM TREE"**, **"ORDER ITEM"**, **"ADD ITEM"**, **"UPDATE ITEM"** and **"CLEAR DATABASE"** buttons.
 
 ### "INVENTORY" button
 When the button is pressed, the inventory page opens and you can see the current stock status.
 >The data are recorded in the system as tables with the **sqlite database**.
 
 <br/><img src = "/images/2.jpg" height="30%" width="30%">
+
+### "ITEM TREE" button
+When the button is pressed, the item tree page opens. According to the products you add, an automatic tree is created and printed on the screen.
+
+<br/><img src = "/images/7.jpg" height="30%" width="30%">
 
 ### "ORDER ITEM" button
 When the button is pressed, the ordering page opens. Order is made by following the steps below.
@@ -57,6 +64,7 @@ When the button is pressed, if there is a value in the spinner, the delete dialo
 
 ### "CLEAR DATABASE" button
 When the button is pressed, it deletes all records in the system.
+<br/><img src = "/images/8.jpg" height="30%" width="30%">
 
 ## SQL Tables
 

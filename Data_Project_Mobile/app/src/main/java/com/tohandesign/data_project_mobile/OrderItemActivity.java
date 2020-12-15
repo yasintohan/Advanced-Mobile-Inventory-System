@@ -9,11 +9,15 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OrderItemActivity extends AppCompatActivity {
 
@@ -26,6 +30,9 @@ public class OrderItemActivity extends AppCompatActivity {
     public static int[] grossreq = new int[10];
 
 
+    public String itemnumtext;
+    public String itemIds[];
+
     private Button orderbutton;
 
     public Intent intent;
@@ -37,6 +44,39 @@ public class OrderItemActivity extends AppCompatActivity {
 
 
         db = new DatabaseHelper(getApplicationContext());
+
+
+        List<ProductItem> items = db.getAllItems();
+        // Array of choices
+        itemIds = new String[items.size()];
+        int i = 0;
+        for(ProductItem item : items) {
+            itemIds[i] = item.getItemId();
+            i++;
+        }
+
+        // Selection of the spinner
+        Spinner spinner = (Spinner) findViewById(R.id.KEY_ITEM_ID);
+
+        // Application of the Array to the Spinner
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,   android.R.layout.simple_spinner_item, itemIds);
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
+        spinner.setAdapter(spinnerArrayAdapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+
+                if(itemIds.length != 0) {
+                    itemnumtext =(String) parent.getItemAtPosition(pos);
+
+
+                }
+
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
 
 
         recyclerView= findViewById(R.id.cardlisterr);
@@ -53,7 +93,7 @@ public class OrderItemActivity extends AppCompatActivity {
         final EditText grosstext9 = (EditText)findViewById(R.id.editText9);
         final EditText grosstext10 = (EditText)findViewById(R.id.editText10);
 
-        final EditText itemnumEditText = (EditText)findViewById(R.id.itemnum);
+
 
 
         final Button resetOrder = (Button)findViewById(R.id.resetOrder);
@@ -62,7 +102,7 @@ public class OrderItemActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String itemnumtext = itemnumEditText.getText().toString();
+
                 if(!TextUtils.isEmpty(itemnumtext)){
                     mList.clear();
                     recyclerView.setAdapter(adapter);
@@ -125,7 +165,6 @@ public class OrderItemActivity extends AppCompatActivity {
                     if(item != null) {
                         calculate(item, grossreq);
                         itemnumtext = "";
-                        itemnumEditText.setText(itemnumtext);
                         onClick(view);
                     } else {
                         Toast.makeText(OrderItemActivity.this,"item not found", Toast.LENGTH_SHORT).show();
