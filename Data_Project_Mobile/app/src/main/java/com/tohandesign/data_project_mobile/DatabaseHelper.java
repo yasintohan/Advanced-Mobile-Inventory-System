@@ -191,7 +191,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //get childs
     public List<Long> getChilds(long item_id) {
         List<Long> childs = new ArrayList<Long>();
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
 
         String selectQuery = "SELECT  * FROM " + TABLE_CHILDS + " WHERE "
                 + KEY_MAIN_ITEM_ID + " = " + item_id;
@@ -212,6 +212,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return childs;
     }
     //#get childs
+
+    //get main
+    public Long getMain(long item_id) {
+        long td = -1;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        if (getChilds(item_id) != null) {
+        String selectQuery = "SELECT  * FROM " + TABLE_CHILDS + " WHERE "
+                + KEY_CHILD_ID + " = " + item_id;
+
+
+        Cursor c = db.rawQuery(selectQuery, null);
+
+            if (c.moveToFirst()) {
+                do {
+                    td = c.getInt((c.getColumnIndex(KEY_MAIN_ITEM_ID)));
+
+                } while (c.moveToNext());
+            }
+
+
+        }
+
+        return td;
+    }
+    //#get main
 
 
     //getting all items
@@ -283,6 +309,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 new String[] { String.valueOf(item.getItemId()) });
     }
     //#Updating Item
+
+
+    //Updating Child
+    public int updateChild(long main_id, long item_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_MAIN_ITEM_ID, main_id);
+
+
+
+        // updating row
+        return db.update(TABLE_CHILDS, values, KEY_CHILD_ID + " = ?",
+                new String[] { String.valueOf(item_id) });
+    }
+    //#Updating Child
 
 
     //Deleting item

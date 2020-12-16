@@ -26,7 +26,10 @@ public class UpdItemActivity extends AppCompatActivity {
     public Long MAIN_ITEM_ID;
 
     public String itemIds[];
+    public String mainIds[];
 
+    public String MAIN_ID = "";
+    public Spinner KEY_MAIN;
     AlertDialog.Builder builder;
 
 
@@ -45,15 +48,25 @@ public class UpdItemActivity extends AppCompatActivity {
         final EditText KEY_LS_RULE = (EditText)findViewById(R.id.KEY_LS_RULE);
         final EditText KEY_REQUIRED = (EditText)findViewById(R.id.KEY_REQUIRED);
 
+        KEY_MAIN = (Spinner)findViewById(R.id.KEY_MAIN);
+
 
         List<ProductItem> items = db.getAllItems();
         // Array of choices
         itemIds = new String[items.size()];
+        mainIds = new String[items.size()+1];
+        mainIds[0] = "";
         int i = 0;
+        int j = 1;
         for(ProductItem item : items) {
             itemIds[i] = item.getItemId();
+            mainIds[j] = item.getItemId();
+            j++;
             i++;
         }
+
+
+
 
         // Selection of the spinner
         Spinner spinner = (Spinner) findViewById(R.id.KEY_ITEM_ID);
@@ -64,7 +77,10 @@ public class UpdItemActivity extends AppCompatActivity {
         spinner.setAdapter(spinnerArrayAdapter);
 
 
-
+        // Application of the Array to the Main Spinner
+        ArrayAdapter<String> mainArrayAdapter = new ArrayAdapter<String>(this,   android.R.layout.simple_spinner_item, mainIds);
+        mainArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
+        KEY_MAIN.setAdapter(mainArrayAdapter);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
@@ -78,6 +94,21 @@ public class UpdItemActivity extends AppCompatActivity {
                     KEY_LEAD_TIME.setText(String.valueOf(item.getLeadTime()));
                     KEY_LS_RULE.setText(String.valueOf(item.getLotSizingRule()));
                     KEY_REQUIRED.setText(String.valueOf(item.getItemRequired()));
+                    KEY_MAIN.setSelection(getIndexOf(mainIds, String.valueOf(db.getMain(MAIN_ITEM_ID))));
+
+                }
+
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+
+        KEY_MAIN.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+
+                if(itemIds.length != 0) {
+                    MAIN_ID = (String) parent.getItemAtPosition(pos);
 
                 }
 
@@ -102,6 +133,10 @@ public class UpdItemActivity extends AppCompatActivity {
                 ProductItem item = new ProductItem(String.valueOf(MAIN_ITEM_ID), AON_HAND, SCH_RCP, ARON_WEEK, LEAD_TIME, LS_RULE, REQUIRED, null);
 
                 db.updateItem(item);
+                if(MAIN_ID != "")
+                    db.updateChild(Long.parseLong(MAIN_ID), MAIN_ITEM_ID);
+
+
 
                 }
         });
@@ -160,4 +195,14 @@ public class UpdItemActivity extends AppCompatActivity {
         });
 
     }
+
+
+    public static int getIndexOf(String[] strings, String item) {
+        for (int i = 0; i < strings.length; i++) {
+            if (item.equals(strings[i])) return i;
+        }
+        return -1;
+    }
+
+
 }

@@ -136,6 +136,17 @@
                         android:hint="Item Required"
                         android:inputType="number" />
 
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Main Item Id" />
+
+                    <Spinner
+                        android:id="@+id/KEY_MAIN"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
 
                 </LinearLayout>
 
