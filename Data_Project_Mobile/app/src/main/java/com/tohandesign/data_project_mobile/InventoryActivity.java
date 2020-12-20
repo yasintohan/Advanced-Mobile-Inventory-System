@@ -79,6 +79,9 @@ public class InventoryActivity extends AppCompatActivity {
     public void setTable(String[][] data, String[] header) {
 
         TableView<String[]> tableView = (TableView<String[]>) findViewById(R.id.tableView);
+        android.view.ViewGroup.LayoutParams params = tableView.getLayoutParams();
+        params.height = data[0].length*600;
+        tableView.setLayoutParams(params);
         tableView.setColumnCount(data[0].length);
         tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this, header));
         tableView.setDataAdapter(new SimpleTableDataAdapter(this, data));

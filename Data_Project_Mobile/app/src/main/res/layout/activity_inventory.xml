@@ -37,7 +37,7 @@
                         <de.codecrafters.tableview.TableView
                             android:id="@+id/tableView"
                             android:layout_width="match_parent"
-                            android:layout_height="400dp"
+                            android:layout_height="wrap_content"
                             app:tableView_columnCount="12" />
                     </LinearLayout>
                 </ScrollView>
