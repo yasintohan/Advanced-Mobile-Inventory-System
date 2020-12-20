@@ -7,6 +7,7 @@
 #  Advanced Mobile Inventory System <img src="http://img.shields.io/badge/-Java-F89820?style=flat&logo=java&logoColor=white">
 
 <img src = "/images/1.jpg" height="20%" width="20%"><img src = "/images/2.jpg" height="20%" width="20%"><img src = "/images/3.jpg" height="20%" width="20%">
+<br/>
 <img src = "/images/4.jpg" height="20%" width="20%"><img src = "/images/5.jpg" height="20%" width="20%"><img src = "/images/7.jpg" height="20%" width="20%">
 <br/>
 
